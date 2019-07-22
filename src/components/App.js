@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ResourceList from './ResourceList';
+import UserList from './UserList';
 
-const App = () => (
-  <div>
-    <h1>App</h1>
-    <h4>App goes here</h4>
-  </div>
-);
+const App = () => {
+  const [resource, setResource] = useState('posts');
+
+  return (
+    <div className="ui container">
+      <UserList />
+      <div>
+        <button type="button" onClick={() => setResource('posts')}>
+          Posts
+        </button>
+        <button type="button" onClick={() => setResource('todos')}>
+          Todos
+        </button>
+      </div>
+      <ResourceList resource={resource} />
+    </div>
+  );
+};
+
 export default App;
